@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:6.0
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    image: sahsatyajeet/ddtask-backend:latest
+    restart: unless-stopped
+    environment:
+      - DB_HOST=mongo
+      - DB_PORT=27017
+      - DB_NAME=ddtaskdb
+    depends_on:
+      - mongo
+    # Do NOT expose backend port on host if host port 8080 is used by Jenkins.
+    # Uncomment ports only if you need direct host access:
+    # ports:
+    #   - "8080:8080"
+
+  frontend:
+    image: sahsatyajeet/ddtask-frontend:latest
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  mongo-data:
+
