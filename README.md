@@ -3,7 +3,9 @@
 This repository contains the MEAN stack application containerized, deployed on AWS EC2, and integrated with GitHub Actions for CI/CD.
 
 **1. Project Overview**
+
 This assignment demonstrates:
+
 A) Containerizing Angular (frontend) and Node.js/Express (backend)
 B) Running MongoDB using official Docker image
 C)Deploying all services using Docker Compose on an EC2 Ubuntu VM
