@@ -33,6 +33,7 @@ B) Backend - https://hub.docker.com/r/sahsatyajeet/ddtask-backend
 C) MongoDB - mongo:6
    
 **4. Deployment Steps (Manual Deployment on EC2)**
+
 SSH into EC2 ->
 ssh -i key.pem ubuntu@<EC2-IP>
 
