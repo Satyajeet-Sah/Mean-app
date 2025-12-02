@@ -26,9 +26,9 @@ All services run inside Docker containers.
 
 Service	Docker Hub Images:
 
-A) Frontend	https://hub.docker.com/r/sahsatyajeet/ddtask-frontend
+A) Frontend	- https://hub.docker.com/r/sahsatyajeet/ddtask-frontend
    
-B) Backend https://hub.docker.com/r/sahsatyajeet/ddtask-backend
+B) Backend - https://hub.docker.com/r/sahsatyajeet/ddtask-backend
    
 C) MongoDB - mongo:6
    
@@ -119,11 +119,11 @@ server {
     }
 }
 
-**7. Live Application URL**
+**8. Live Application URL**
 
 http://43.204.147.18 (Will only work if VM is running)
 
-**8. Notes**
+**9. Notes**
 
 MongoDB is running as a Docker container
 
