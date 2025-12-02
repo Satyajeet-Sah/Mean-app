@@ -58,17 +58,41 @@ Manual deployment works successfully and reliably.
 A) GitHub Actions build screenshot
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2a1a7361-268e-425f-83df-d8e66e8b4737" />
 
-
 B) Docker Hub images
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/4798c7b0-4d5c-453d-83da-6089b865aa15" />
 
 C) EC2 Terminal (docker-compose pull, up, ps)
+<img width="1352" height="199" alt="image" src="https://github.com/user-attachments/assets/4b9451a9-6883-4d4f-9e5e-17f9e323b1b7" />
+<img width="1361" height="202" alt="image" src="https://github.com/user-attachments/assets/4c6f20fa-1cfa-44d8-9d8b-5427eec97527" />
+<img width="1362" height="243" alt="image" src="https://github.com/user-attachments/assets/6a7d8093-c957-4a2a-80de-45f0b13339c4" />
 
-4) Working UI screenshot (http://<EC2-IP>/)
+D) Working UI screenshot
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/6fd66c0a-8f9c-4ce6-9780-e9aa72f573dd" />
 
-5) Nginx reverse proxy working
+
+**7) Nginx reverse proxy working**
+Nginx is used as a reverse proxy to route traffic to the Angular frontend and Node backend containers.
+All user traffic goes through Nginx (port 80).
+Angular UI is served from /usr/share/nginx/html.
+API calls /api/* are forwarded internally to:
+http://backend:8080
+Nginx configuration file used in (frontend/nginx.conf):
+
+server {
+    listen 80;
+    server_name _;
+    root /usr/share/nginx/html;
+    index index.html;
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+    location /api/ {
+        proxy_pass http://backend:8080/;
+    }
+}
 
 **7. Live Application URL**
-http://72.31.3.181
+http://43.204.147.18 (may not work if VM is stopped)
 
 **8. Notes**
 MongoDB is running as a Docker container
